@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { fetchPopularSeries } from '@/lib/API'
-import { Series } from '@/types/series'
+import { Serie } from '@/types/series'
 
 const SeriesList: React.FC = () => {
-  const [series, setSeries] = useState<Series[]>([])
+  const [series, setSeries] = useState<Serie[]>([])
 
   useEffect(() => {
     fetchPopularSeries()
