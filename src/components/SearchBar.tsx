@@ -23,7 +23,7 @@ const SearchBar: React.FC = () => {
       onSubmit={handleSubmit}
       className="flex items-center bg-yellow-300 border-2 border-black rounded-full px-3 py-0.5 gap-2 w-full"
     >
-      {/* Input */}
+      
       <input
         type="text"
         placeholder="Busca tu película, serie..."
@@ -37,7 +37,7 @@ const SearchBar: React.FC = () => {
         "
       />
 
-      {/* Icono de abeja (submit) */}
+      
       <button
         type="submit"
         className="hidden lg:inline transition-transform hover:scale-110"

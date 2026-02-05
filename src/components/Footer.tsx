@@ -6,7 +6,7 @@ import logo from '@/assets/images/TheHiveLogo.png'
 import { FaTwitter, FaLinkedin, FaEnvelope, FaGithub } from 'react-icons/fa'
 
 
-// Puedes reemplazar los enlaces con tus redes reales
+
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/Nelius72', icon: <FaGithub className="text-gray-800 hover:text-white transition" /> },
   { name: 'Twitter', href: 'https://x.com/Nelius72', icon: <FaTwitter className="text-blue-500 hover:text-white transition" /> },
