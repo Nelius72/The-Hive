@@ -2,9 +2,9 @@ import './globals.css'
 import NavBar from '@/components/NavBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Delius } from 'next/font/google'
+import { Quicksand } from 'next/font/google'
 
-const delius = Delius({
+const quicksand = Quicksand({
   weight: '400',
   subsets: ['latin'],
 })
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${delius.className} bg-gray-900 text-white min-h-screen`}>
+      <body className={`${quicksand.className} bg-gray-900 text-white min-h-screen`}>
         <NavBar />
         {/* Contenido desplazado debajo del navbar */}
         <div className="pt-20">
