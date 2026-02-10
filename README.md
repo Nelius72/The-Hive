@@ -1,16 +1,16 @@
 # 🎬 The Hive – Movie & Series Tracker
 
-The Hive es una aplicación web para descubrir, buscar y explorar películas y series utilizando la API de TMDB.
+The Hive is a web application to discover, search, and explore movies and TV series using the TMDB API.
 
-## 🚀 Funcionalidades
-- 🔎 Búsqueda de películas y series
-- 🎞️ Listados de películas y series populares
-- 📄 Página de detalle con información, reparto y trailer
+## 🚀 Features
+- 🔎 Movie and TV series search
+- 🎞️ Popular movies and series listings
+- 📄 Detail pages with info, cast and trailer
 - ⏳ Skeleton loading
-- 📱 Diseño responsive
-- 🧭 Scroll suave a secciones About y Contact
+- 📱 Responsive design
+- 🧭 Smooth scroll to About and Contact sections
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 - React
 - Next.js (App Router)
 - TypeScript
@@ -19,14 +19,17 @@ The Hive es una aplicación web para descubrir, buscar y explorar películas y s
 - Axios
 - Git & GitHub
 - Vercel
-  
-## ▶️ Uso
-npm install
-npm run dev
 
-## 🔐 Variables de entorno
-Crear un archivo `.env.local`:
+## ▶️ Run locally
+- npm install
+- npm run dev
+
+## 🔐 Environment variables
+Create a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_TMDB_API_KEY=tu_api_key_aqui
+NEXT_PUBLIC_TMDB_API_KEY=your_api_key_here
+
+
+
 
