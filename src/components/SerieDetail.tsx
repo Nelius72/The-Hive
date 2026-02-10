@@ -135,7 +135,7 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
                     className="rounded-lg"
                   />
                 ) : (
-                  <SkeletonCard width={150}  />
+                  <SkeletonCard width={150} height={225} />
                 )}
                 <p className="text-sm font-semibold truncate text-white">
                   {actor.name}
