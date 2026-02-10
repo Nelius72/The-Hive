@@ -1,47 +1,47 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { fetchSerieDetails, fetchSerieCast } from '@/lib/API'
-import { Serie, SerieCast, Video } from '@/types/series'
-import SkeletonCard from './SkeletonCard'
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { fetchSerieDetails, fetchSerieCast } from "@/lib/API";
+import { Serie, SerieCast, Video } from "@/types/series";
+import SkeletonCard from "./SkeletonCard";
 
 interface SerieDetailProps {
-  id: string
+  id: string;
 }
 
 const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
-  const [serie, setSerie] = useState<Serie | null>(null)
-  const [cast, setCast] = useState<SerieCast[]>([])
-  const [trailer, setTrailer] = useState<Video | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [serie, setSerie] = useState<Serie | null>(null);
+  const [cast, setCast] = useState<SerieCast[]>([]);
+  const [trailer, setTrailer] = useState<Video | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
 
-        const serieData = await fetchSerieDetails(id)
-        setSerie(serieData)
+        const serieData = await fetchSerieDetails(id);
+        setSerie(serieData);
 
-        const castData = await fetchSerieCast(id)
-        setCast(castData.slice(0, 16)) // Top 16 del reparto
+        const castData = await fetchSerieCast(id);
+        setCast(castData.slice(0, 16)); // Top 16 del reparto
 
         const trailerVideo = serieData.videos?.results.find(
-          (v: Video) => v.type === 'Trailer'
-        )
-        setTrailer(trailerVideo || null)
+          (v: Video) => v.type === "Trailer",
+        );
+        setTrailer(trailerVideo || null);
       } catch (err) {
-        console.error(err)
-        setError('Error cargando la serie.')
+        console.error(err);
+        setError("Error cargando la serie.");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    loadData()
-  }, [id])
+    loadData();
+  }, [id]);
 
   if (loading) {
     return (
@@ -50,11 +50,15 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
           <SkeletonCard key={idx} height={200} />
         ))}
       </div>
-    )
+    );
   }
 
   if (error || !serie) {
-    return <p className="text-center text-red-500 mt-10">{error || 'Serie no encontrada.'}</p>
+    return (
+      <p className="text-center text-red-500 mt-10">
+        {error || "Serie no encontrada."}
+      </p>
+    );
   }
 
   return (
@@ -74,13 +78,14 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
             />
             <div className="mt-2 text-sm text-gray-200 space-y-1">
               <p>
-                <strong>Estreno:</strong> {serie.first_air_date || 'Desconocida'}
+                <strong>Estreno:</strong>{" "}
+                {serie.first_air_date || "Desconocida"}
               </p>
               <p>
-                <strong>Temporadas:</strong> {serie.number_of_seasons ?? 'N/A'}
+                <strong>Temporadas:</strong> {serie.number_of_seasons ?? "N/A"}
               </p>
               <p>
-                <strong>Episodios:</strong> {serie.number_of_episodes ?? 'N/A'}
+                <strong>Episodios:</strong> {serie.number_of_episodes ?? "N/A"}
               </p>
             </div>
           </div>
@@ -89,11 +94,13 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
           <div className="flex-1 space-y-4">
             <h1 className="text-4xl font-bold text-white">{serie.name}</h1>
             <div>
-              <h2 className="text-xl font-semibold mb-2 text-white">Sinopsis</h2>
+              <h2 className="text-xl font-semibold mb-2 text-white">
+                Sinopsis
+              </h2>
               <p className="text-gray-200">{serie.overview}</p>
             </div>
             <p className="text-yellow-500 font-bold">
-              Calificación: {serie.vote_average ?? 'N/A'}
+              Calificación: {serie.vote_average ?? "N/A"}
             </p>
 
             {trailer && (
@@ -113,7 +120,9 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
 
         {/* Reparto */}
         <div>
-          <h2 className="text-2xl font-bold mb-4 text-white">Reparto Principal</h2>
+          <h2 className="text-2xl font-bold mb-4 text-white">
+            Reparto Principal
+          </h2>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-4">
             {cast.map((actor) => (
               <div key={actor.id} className="text-center">
@@ -126,11 +135,13 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
                     className="rounded-lg"
                   />
                 ) : (
-                  <SkeletonCard width={150} height={225} />
+                  <SkeletonCard width={150}  />
                 )}
-                <p className="text-sm font-semibold truncate text-white">{actor.name}</p>
+                <p className="text-sm font-semibold truncate text-white">
+                  {actor.name}
+                </p>
                 <p className="text-xs text-gray-400 truncate">
-                  {actor.character || 'Desconocido'}
+                  {actor.character || "Desconocido"}
                 </p>
               </div>
             ))}
@@ -138,7 +149,7 @@ const SerieDetail: React.FC<SerieDetailProps> = ({ id }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SerieDetail
+export default SerieDetail;
