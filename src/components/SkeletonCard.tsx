@@ -4,7 +4,7 @@ import React from 'react'
 
 interface SkeletonCardProps {
   width?: string | number
-  height?: number
+  height?: number | string
 }
 
 const SkeletonCard: React.FC<SkeletonCardProps> = ({
